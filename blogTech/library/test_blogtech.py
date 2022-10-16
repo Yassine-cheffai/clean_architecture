@@ -5,16 +5,12 @@ from .blogtech import PostsResult
 from .blogtech import TechBlogError
 
 
-@pytest.fixture
-def blog():
-    blog = BlogTech("http://127.0.0.1:8000")
-    return blog
-
 def test_instance_blog(blog):
     assert isinstance(blog, BlogTech)
 
 
-def test_add_new_post(blog):
+def test_add_new_post(blog, requests_mock):
+    requests_mock.post("http://127.0.0.1:8000/posts/new")
     result = blog.add_post(title="Rust", description="rust programmation")
     assert result == None
 

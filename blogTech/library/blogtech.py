@@ -98,13 +98,13 @@ class BlogTech:
         return posts
 
 
-blog = BlogTech("http://127.0.0.1:8000")
-posts = blog.search("rust")
-for post in posts:
-    print(f"title: {post.title}, description: {post.description}")
+# blog = BlogTech("http://127.0.0.1:8000")
+# posts = blog.search("rust")
+# for post in posts:
+#     print(f"title: {post.title}, description: {post.description}")
 
-print("-----------")
-blog.add_post(title="golang", description="golang was developed by google")
-posts = blog.search("go")
-for post in posts:
-    print(f"title: {post.title}, description: {post.description}")
+# print("-----------")
+# blog.add_post(title="golang", description="golang was developed by google")
+# posts = blog.search("go")
+# for post in posts:
+#     print(f"title: {post.title}, description: {post.description}")
