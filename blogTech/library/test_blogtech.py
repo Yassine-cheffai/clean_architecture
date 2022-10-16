@@ -36,7 +36,7 @@ def test_search_posts(blog, requests_mock):
     )
     posts: PostsResult = blog.search("rust")
     assert isinstance(posts, PostsResult)
-    
+
     rust_post: Post = posts[0]
     assert rust_post.title == "rust"
 

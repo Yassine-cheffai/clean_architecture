@@ -39,12 +39,11 @@ class PostsResult:
     def __getitem__(self, index: int) -> Post:
         return Post(
             title=self.posts[index]["title"],
-            description=self.posts[index]["description"]
+            description=self.posts[index]["description"],
         )
 
     def __len__(self) -> int:
         return len(self.posts)
-
 
 
 class HttpRequests:
@@ -106,18 +105,3 @@ class BlogTech:
     def search(self, query: str) -> PostsResult:
         posts = self.httprequest.get_search_posts(query)
         return posts
-
-
-blog = BlogTech("http://127.0.0.1:8000")
-# posts = blog.search("rust")
-# for post in posts:
-#     print(f"title: {post.title}, description: {post.description}")
-
-print("-----------")
-blog.add_post(title="golang", description="golang was developed by google")
-posts = blog.search("go")
-# for post in posts:
-#     print(f"title: {post.title}, description: {post.description}")
-
-print(len(posts))
-print(posts[0])
