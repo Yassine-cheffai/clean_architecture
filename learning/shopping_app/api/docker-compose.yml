@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: app
+    build: .
+    command: bash -c "flask --app main --debug run --host=0.0.0.0"
+    ports:
+      - 5000:5000
+    volumes:
+      - .:/app
+    restart: always
+    # to use pdb, attach the service in a new terminal(docker attach app) because docker compose up don't support it 
+    stdin_open: true
+    tty: true

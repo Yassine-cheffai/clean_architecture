@@ -1,4 +1,4 @@
-from main import SimpleCalculator
+from .main import SimpleCalculator
 
 
 def test_add_two_numbers():
