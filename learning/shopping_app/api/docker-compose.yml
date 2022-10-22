@@ -4,7 +4,7 @@ services:
   app:
     container_name: app
     build: .
-    command: bash -c "flask --app main --debug run --host=0.0.0.0"
+    command: bash -c "flask run --host=0.0.0.0"
     ports:
       - 5000:5000
     volumes:
