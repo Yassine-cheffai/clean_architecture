@@ -3,8 +3,11 @@ from flask_restx import Api, Resource, fields
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask import request
+from flask_cors import CORS
+
 
 app = Flask(__name__)
+CORS(app)
 db = SQLAlchemy()
 api = Api(app)
 
@@ -18,7 +21,7 @@ food_model = api.model(
         "category": fields.String,
         "name": fields.String,
         "price": fields.Integer,
-        "stacked": fields.Boolean,
+        "stocked": fields.Boolean,
     },
 )
 
@@ -28,7 +31,7 @@ class Food(db.Model):
     category: str = db.Column(db.String)
     name: str = db.Column(db.String)
     price: int = db.Column(db.Integer)
-    stacked: bool = db.Column(db.Boolean)
+    stocked: bool = db.Column(db.Boolean)
 
     def __str__(self) -> str:
         return f"{self.name}"
@@ -46,7 +49,7 @@ class FoodApi(Resource):
                 "id": food.id,
                 "category": food.category,
                 "name": food.name,
-                "stacked": food.stacked,
+                "stocked": food.stocked,
                 "price": food.price,
             }
             for food in Food.query.all()
@@ -61,7 +64,7 @@ class FoodApi(Resource):
             category=data["category"],
             name=data["name"],
             price=data["price"],
-            stacked=data["stacked"],
+            stocked=data["stocked"],
         )
         db.session.add(food)
         db.session.commit()
@@ -69,7 +72,7 @@ class FoodApi(Resource):
         return {
             "category": food.category,
             "name": food.name,
-            "stacked": food.stacked,
+            "stocked": food.stocked,
             "price": food.price,
         }, 200
 
