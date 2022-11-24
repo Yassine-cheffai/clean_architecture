@@ -22,7 +22,7 @@ class SimpleCalculator:
         return a / b
 
     def avg(
-        self, values: list[int], lt: None | int = None, ut: None | int = None
+        self, values: list[int | float], lt: None | int = None, ut: None | int = None
     ) -> float:
         filtred_values = []
         if ut and lt:
